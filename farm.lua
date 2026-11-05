@@ -1,5 +1,3 @@
--- This file was generated at discord.gg/syncrypt
-
 _G.ChestFarm = true
 _G.__FarmRunning = false
 _G.TrackScan = false
@@ -71,18 +69,18 @@ t1.value4.Parent = Frame
 t1.value5 = 80
 t1.value6 = 0
 t1.value7 = 3
-t1.value8 = 0.02
-t1.value9 = 0.05
-t1.value10 = 3
+t1.value8 = 0.01  -- [تعديل] تم تقليعه لتسريع الضغط
+t1.value9 = 0.02  -- [تعديل] تم تقليله لتسريع الانتقال للصندوق التالي
+t1.value10 = 2   -- [تعديل] تقليل وقت انتظار البحث الفارغ
 t1.value11 = 0.1
 t1.value12 = 0.3
 t1.value13 = 0.6
 t1.value14 = 100
-t1.value15 = 0.4
-t1.value16 = 150
+t1.value15 = 0.3   -- [تعديل] تسريع تحديث وضع الأمان
+t1.value16 = 200  -- [تعديل] زيادة خطوة المسح لتغطية مسافة أسرع
 t1.value17 = 36000
 t1.value18 = 1200
-t1.value19 = 0.6
+t1.value19 = 0.2   -- [تعديل] تقليل وقت الانتظار المؤقت أثناء الانتقال في الفحص
 t1.value20 = 0
 t1.value21 = 0
 t1.value22 = 0
@@ -274,7 +272,7 @@ function t1.value32()
 		v29.Sit = false
 		v29.Jump = true
 	end)
-	task.wait(0.4)
+	task.wait(0.2) -- [تعديل] تقليل وقت انتظار الديزموانت
 
 	local v31 = t1.value26()
 	local Sit2
@@ -294,7 +292,7 @@ function t1.value32()
 	pcall(function()
 		v31.Sit = false
 	end)
-	task.wait(0.3)
+	task.wait(0.2) -- [تعديل]
 	t1.value24("Dismounted from train seat.")
 
 	return true
@@ -324,7 +322,7 @@ function t1.value34(p3)
 			return
 		end
 
-		task.wait(0.1)
+		task.wait(0.05) -- [تعديل]
 
 		local Sit = Humanoid.Sit
 
@@ -692,7 +690,7 @@ function t1.value45(p12)
 		v89.AssemblyLinearVelocity = Vector3.zero
 		v89.CFrame = CFrame.new(p12.Pos + Vector3.new(0, 3, 2), p12.Pos)
 	end)
-	task.wait(0.2)
+	task.wait(0.1) -- [تعديل] تقليل وقت الانتظار بعد التيليبرت
 
 	local Model = t1.value39(20)
 	local Parent, v92, Name, v94, v95
@@ -952,7 +950,7 @@ function t1.value48()
 						end
 					end
 
-					task.wait(0.15)
+					task.wait(0.08) -- [تعديل] تقليل وقت الانتظار بين الصناديق أثناء المسح
 				end
 
 				local v129 = t1.value25()
@@ -964,7 +962,7 @@ function t1.value48()
 					end)
 				end
 
-				task.wait(0.2)
+				task.wait(0.1) -- [تعديل]
 			end
 
 			scanX = scanX + t1.value16
@@ -973,7 +971,7 @@ function t1.value48()
 			task.wait(1)
 		end
 
-		task.wait(0.1)
+		task.wait(0.05) -- [تعديل]
 	end
 
 	_G.__ScanRunning = false
@@ -1082,27 +1080,4 @@ task.spawn(function()
 
 					if not ok then
 						t1.value24("Error: " .. tostring(result))
-					end
-				end
-
-				task.wait(0.15)
-			end
-
-			task.wait(0.3)
-		end
-	end
-
-	_G.__FarmRunning = false
-
-	if not _G.SafeMode then
-		t1.value35()
-		t1.value24("STOP farm.")
-
-		return
-	end
-
-	t1.value42()
-	t1.value35()
-	t1.value24("STOP farm.")
-end)
-t1.value24("Menu OK. Farm auto-ON. Click SCAN for track sweep. Auto-dismount + Safe Mode + NoClip + Leave-on-loot.")
+			
